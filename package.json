@@ -1,0 +1,30 @@
+{
+  "name": "order-api",
+  "version": "1.0.0",
+  "description": "API de gerenciamento de pedidos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marcellojoaquim/order-api.git"
+  },
+  "author": "Marcello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcellojoaquim/order-api/issues"
+  },
+  "homepage": "https://github.com/marcellojoaquim/order-api#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0",
+    "sequelize": "^6.37.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
