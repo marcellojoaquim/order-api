@@ -3,7 +3,9 @@ const { Order, Item } = require('../models/index');
 const db = require('../config/database');
 
 class OrderService {
-  async createOrderWithMapping(orderDataFromApi) {
+
+  // Criar uma nova Order
+  async createOrder(orderDataFromApi) {
     const t = await db.transaction();
 
     try {
@@ -31,6 +33,7 @@ class OrderService {
     }
   }
 
+  // Buscar Order por id
   async getOrderById(id) {
     try {
       const order = await Order.findByPk(id, {
@@ -52,6 +55,7 @@ class OrderService {
     }
   }
 
+  // Buscar todas as Orders
   async findAll() {
     try {
       const order = await Order.findAll(
@@ -63,6 +67,46 @@ class OrderService {
         });
         return order;
     } catch (error) {
+      throw error;
+    }
+  }
+
+  // atualizar uma Order
+
+  async updateOrder(id, orderDataFromApi) {
+    const t = await db.transaction();
+
+    try {
+      const order = await Order.findByPk(id);
+      //validar se existe antes de proceguir com as alterações
+      if (!order) {
+        throw new Error('Pedido não encontrado');
+      }
+
+      const mappedOrderData = {
+        value: orderDataFromApi.valorTotal,
+        creationDate: orderDataFromApi.dataCriacao
+      };
+
+      await order.update(mappedOrderData, { transaction: t });
+
+      await Item.destroy({ where: { orderId: id }, transaction: t });
+
+      const newItems = orderDataFromApi.items.map(item => ({
+        orderId: id,
+        productId: item.idItem,
+        quantity: item.quantidadeItem,
+        price: item.valorItem
+      }));
+
+      await Item.bulkCreate(newItems, { transaction: t });
+
+      await t.commit();
+
+      return await Order.findByPk(id, { include: [{ model: Item, as: 'items' }] });
+
+    } catch (error) {
+      await t.rollback();
       throw error;
     }
   }

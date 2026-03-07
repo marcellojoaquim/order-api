@@ -42,4 +42,17 @@ router.get('/order/:id', verifyToken, orderController.show);
  */
 router.get('/order', verifyToken, orderController.findAll);
 
+/**
+ * @swagger
+ * /order:
+ *   put:
+ *     summary: Atualizar uma Order pelo id
+ *     responses:
+ *       200:
+ *         description: Ok
+ *       404:
+ *         description: Not Found
+ */
+router.put('/order/:id', verifyToken, orderController.updateOrder);
+
 module.exports = router;
