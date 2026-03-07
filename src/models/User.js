@@ -4,29 +4,6 @@ const bcrypt = require('bcryptjs');
 
 
 // Mapeamento do usuário que irá ter acesso as rotas de pedidos
-/*
-const User = db.define('users', {
-  id: {
-    type: Sequelize.INTEGER.UNSIGNED,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false
-  },
-
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-});
-*/
 
 const User = db.define('users', {
   id: {
@@ -52,6 +29,7 @@ const User = db.define('users', {
   tableName: 'users',
   underscored: true 
 });
+
 // Encriitação e validação da senha do usuário
 
 User.encryptPWD = async (password) => {
