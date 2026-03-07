@@ -55,4 +55,18 @@ router.get('/order', verifyToken, orderController.findAll);
  */
 router.put('/order/:id', verifyToken, orderController.updateOrder);
 
+/**
+ * @swagger
+ * /order:
+ *   delete:
+ *     summary: remover um pedido
+ *     responses:
+ *       200:
+ *         description: Ok
+ *       404:
+ *         description: Not Found
+ */
+router.delete('/order/:id', verifyToken, orderController.deleteOrder);
+
+
 module.exports = router;

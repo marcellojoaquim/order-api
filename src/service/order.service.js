@@ -110,6 +110,39 @@ class OrderService {
       throw error;
     }
   }
+
+  // Deletar uma Order
+  async deleteOrder(id) {
+    const t = await db.transaction();
+
+    try {
+      // Valida se existe antes de proceguir com a deleção
+      const order = await Order.findByPk(id);
+      
+      if (!order) {
+        const error = new Error('Pedido não encontrado para exclusão');
+        error.status = 404;
+        throw error;
+      }
+      //remoção em cascata
+      await Item.destroy({
+        where: { orderId: id },
+        transaction: t
+      });
+
+      await Order.destroy({
+        where: { orderId: id },
+        transaction: t
+      });
+
+      await t.commit();
+      return { message: `Pedido ${id} removido com sucesso.` };
+
+    } catch (error) {
+      await t.rollback();
+      throw error;
+    }
+  }
 }
 
 module.exports = new OrderService();

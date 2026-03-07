@@ -45,4 +45,15 @@ const updateOrder = async(req, res) => {
   }
 }
 
-module.exports = {store, show, findAll, updateOrder};
+const deleteOrder = async(req, res) => {
+  try {
+    const {id} = req.params;
+    const result = await OrderService.deleteOrder(id);
+    return res.status(200).json(result);
+  } catch (error) {
+    const status = error.status || 400;
+    return res.status(status).json({error: 'Erro ao remover pedido', details: error.message})
+  }
+}
+
+module.exports = {store, show, findAll, updateOrder, deleteOrder};
