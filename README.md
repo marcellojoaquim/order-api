@@ -14,6 +14,10 @@ execute o comando:
     estara rodando na porta 3000 a api em node e na 5432 o banco de dados.
 ```
 
+### Acesso a documentação da API
+
+` http://localhost:3000/api-docs/#/ `
+
 ## Tecnologias
 - NodeJS
 - PostgreSQL
