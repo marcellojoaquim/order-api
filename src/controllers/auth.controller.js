@@ -30,8 +30,9 @@ exports.signUp = async (req, res) => {
 };
 
 // Método para gerar o JWT.
+// O token gerado tem expira em 1h
 exports.logIn = async (req, res) => {
-  const existsUser = await User.findOne({email: req.body.email});
+  const existsUser = await User.findOne({where:{email: req.body.email}});
   if(!existsUser) return res.status(400).json({
     message: 'User not exists'
   })
@@ -41,7 +42,7 @@ exports.logIn = async (req, res) => {
     token: null,
     message: 'Invalid password'
   })
-  console.log("Login: ",existsUser);
+  //console.log("Login: ",existsUser); usado para validar informações
   const secretKey = Buffer.from(process.env.SECRETE_KEY, "base64");
 
   const token = jwt.sign(
