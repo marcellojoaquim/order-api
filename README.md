@@ -20,8 +20,13 @@ execute o comando:
 
 ## Tecnologias
 - NodeJS
+- Express.js
+- JWT
+- BCryptjs
+- Sequelize
 - PostgreSQL
 - Docker + Docker-compose (Opcional)
+- SwaggerUI
 
 <p>No caso de optar por não usar o docker, ainda será necessário ter um banco de dados postgresql 
 sendo executado na porta 5432</p>
