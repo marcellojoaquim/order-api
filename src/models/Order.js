@@ -2,7 +2,6 @@
 
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/database.js');
-const Item = require('./Item.js');
 
 const Order = db.define('Order', {
   orderId: {
@@ -18,10 +17,5 @@ const Order = db.define('Order', {
   }
 })
 
-Order.hasMany(Item, 
-  {
-    foreignKey: 'orderId', 
-    as: 'items' 
-  });
 
 module.exports = Order;

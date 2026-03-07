@@ -1,7 +1,5 @@
 // Criação de um Order e mapeamento da model para normalização dos dados
-
-const Order = require('../models/Order');
-const Item = require('../models/Item');
+const { Order, Item } = require('../models/index');
 const db = require('../config/database');
 
 class OrderService {

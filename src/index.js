@@ -2,6 +2,7 @@ const express = require('express');
 const sequelize= require('sequelize');
 const authRoute = require('./routes/auth.route');
 const User = require('./models/User');
+const orderRoute = require('./routes/order.route')
 
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -42,6 +43,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use('/api/auth', authRoute);
+app.use('/', orderRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.listen(port, ()=>{

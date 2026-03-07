@@ -8,7 +8,7 @@ abela: Items
 
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/database.js');
-const Order = require('./Order.js');
+
 
 const Item = db.define('Item', {
   productId: {
@@ -26,10 +26,5 @@ const Item = db.define('Item', {
   }
 })
 
-Item.belongsTo(Order, 
-  {
-    foreignKey: 'orderId'
-  }
-)
 
 module.exports = Item;

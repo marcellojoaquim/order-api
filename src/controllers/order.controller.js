@@ -1,6 +1,6 @@
 //Camada controller
 
-const OrderService = require('../services/order.service');
+const OrderService = require('../service/order.service');
 
 const store = async (req, res) => {
   try {
@@ -11,4 +11,4 @@ const store = async (req, res) => {
   }
 };
 
-module.exports = store;
+module.exports = {store};
