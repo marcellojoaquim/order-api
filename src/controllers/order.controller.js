@@ -11,4 +11,26 @@ const store = async (req, res) => {
   }
 };
 
-module.exports = {store};
+const show = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const order = await OrderService.getOrderById(id);
+    return res.status(200).json(order);
+  } catch (error) {
+    const status = error.status || 400;
+    return res.status(status).json({ error: error.message });
+  }
+};
+
+const findAll = async(req, res) => {
+  try {
+    var orders = []
+    orders = await OrderService.findAll();
+    return res.status(200).json(orders); 
+  } catch (error) {
+    const status = error.status || 400;
+    return res.status(status).json({error: error.message})
+  }
+}
+
+module.exports = {store, show, findAll};

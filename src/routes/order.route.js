@@ -16,4 +16,30 @@ const { verifyToken } = require('../middleware/authToken');
  */
 router.post('/order', verifyToken, orderController.store);
 
+/**
+ * @swagger
+ * /order:
+ *   get:
+ *     summary: Buscar uma Order pelo id
+ *     responses:
+ *       200:
+ *         description: Ok
+ *       404:
+ *         description: Not Found
+ */
+router.get('/order/:id', verifyToken, orderController.show);
+
+/**
+ * @swagger
+ * /order:
+ *   get:
+ *     summary: Busar todas Orders
+ *     responses:
+ *       200:
+ *         description: ok
+ *       400:
+ *         description: Bad Request
+ */
+router.get('/order', verifyToken, orderController.findAll);
+
 module.exports = router;

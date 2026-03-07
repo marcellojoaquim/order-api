@@ -30,6 +30,42 @@ class OrderService {
       throw error;
     }
   }
+
+  async getOrderById(id) {
+    try {
+      const order = await Order.findByPk(id, {
+        include: [{ 
+          model: Item, 
+          as: 'items'
+        }]
+      });
+
+      if (!order) {
+        const error = new Error('Pedido não encontrado');
+        error.status = 404;
+        throw error;
+      }
+
+      return order;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async findAll() {
+    try {
+      const order = await Order.findAll(
+        {
+          include: [{
+            model: Item,
+            as: 'items'
+          }]
+        });
+        return order;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = new OrderService();
