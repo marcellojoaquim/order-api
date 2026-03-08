@@ -24,7 +24,7 @@ const show = async (req, res) => {
 // Retorna todas as Orders
 const findAll = async(req, res) => {
   try {
-    var orders = []
+    let orders = []
     orders = await OrderService.findAll();
     return res.status(200).json(orders); 
   } catch (error) {
