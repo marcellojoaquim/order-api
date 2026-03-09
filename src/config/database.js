@@ -23,9 +23,9 @@ const sequelize = new Sequelize(
 async function testConnection() {
   try {
     await sequelize.authenticate();
-    console.log('Sucesso na conn');
+    console.log('Sucesso na conn com o banco');
   } catch (error) {
-    console.error('Erro na conn', error);
+    console.error('Erro na conn com o banco', error);
   }
 }
 

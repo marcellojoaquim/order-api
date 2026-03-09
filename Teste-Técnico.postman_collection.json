@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "da682a87-f47c-4c50-885b-437ab3e4dd5b",
+		"name": "Teste-Técnico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20819029"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Cadastro-User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User Name\",\n    \"password\": \"12345678\",\n    \"email\": \"user@email.com\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@email.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Cria-Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVXNlciBOYW1lIiwiZW1haWwiOiJ1c2VyQGVtYWlsLmNvbSIsImlhdCI6MTc3Mjg5ODkxMywiZXhwIjoxNzcyOTAyNTEzfQ.1PUOmXwhMbzNjXOMh_yH1nor9mdj0_OXF_4UyvkdkRg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroPedido\": \"v10089015vdb-01\",\n  \"valorTotal\": 10000,\n  \"dataCriacao\": \"2023-07-19T12:24:11.5299601+00:00\",\n  \"items\": [\n    {\n      \"idItem\": \"2434\",\n      \"quantidadeItem\": 1,\n      \"valorItem\": 1000\n    },\n    {\n      \"idItem\": \"2435\",\n      \"quantidadeItem\": 2,\n      \"valorItem\": 4500\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar-Order-byId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVXNlciBOYW1lIiwiZW1haWwiOiJ1c2VyQGVtYWlsLmNvbSIsImlhdCI6MTc3Mjg5ODkxMywiZXhwIjoxNzcyOTAyNTEzfQ.1PUOmXwhMbzNjXOMh_yH1nor9mdj0_OXF_4UyvkdkRg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/order/v10089015vdb-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"v10089015vdb-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar-Todas-Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVXNlciBOYW1lIiwiZW1haWwiOiJ1c2VyQGVtYWlsLmNvbSIsImlhdCI6MTc3Mjg5ODkxMywiZXhwIjoxNzcyOTAyNTEzfQ.1PUOmXwhMbzNjXOMh_yH1nor9mdj0_OXF_4UyvkdkRg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar-Order-byId",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVXNlciBOYW1lIiwiZW1haWwiOiJ1c2VyQGVtYWlsLmNvbSIsImlhdCI6MTc3Mjg5ODkxMywiZXhwIjoxNzcyOTAyNTEzfQ.1PUOmXwhMbzNjXOMh_yH1nor9mdj0_OXF_4UyvkdkRg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"valorTotal\": 10000,\n  \"dataCriacao\": \"2023-07-19T12:24:11.5299601+00:00\",\n  \"items\": [\n    {\n      \"idItem\": \"2434\",\n      \"quantidadeItem\": 1,\n      \"valorItem\": 1000\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/order/v10089015vdb-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"v10089015vdb-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Order",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVXNlciBOYW1lIiwiZW1haWwiOiJ1c2VyQGVtYWlsLmNvbSIsImlhdCI6MTc3Mjg5ODkxMywiZXhwIjoxNzcyOTAyNTEzfQ.1PUOmXwhMbzNjXOMh_yH1nor9mdj0_OXF_4UyvkdkRg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/order/v10089015vdb-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"v10089015vdb-01"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

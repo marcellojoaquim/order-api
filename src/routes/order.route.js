@@ -65,6 +65,8 @@ router.put('/order/:id', verifyToken, orderController.updateOrder);
  *         description: Ok
  *       404:
  *         description: Not Found
+ *      400:
+ *        description: Bad Request
  */
 router.delete('/order/:id', verifyToken, orderController.deleteOrder);
 
